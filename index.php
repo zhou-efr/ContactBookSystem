@@ -17,9 +17,9 @@
                 border-top-right-radius: 0.5rem;
                 border-bottom-right-radius: 0.5rem;
             }
-            .category-list-box-focus {
-                background-color: rgba(196, 196, 196, 0.29);
-            }
+            /*.category-list-box-focus {*/
+            /*    background-color: rgba(196, 196, 196, 0.29);*/
+            /*}*/
             .category-list-text {
                 font-size: 1.25rem;
                 line-height: 1.75rem;
@@ -50,15 +50,6 @@
                                 <?php echo $_SESSION['username']; ?>
                             </p>
                         </div>
-                        <form class="border-2 border-gray-400 rounded-lg focus:outline-none focus:border-gray-500 m-3 flex items-center justify-center" action="index.php?filter='search'" method="post">
-                            <input type="text" name="search" placeholder="Search..." class="h-10 outline-none">
-                            <button type="submit">
-                                <svg class="h-8" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12.6923 0C5.69405 0 0 5.69425 0 12.6923C0 19.6903 5.69425 25.3846 12.6923 25.3846C19.6903 25.3846 25.3846 19.6903 25.3846 12.6923C25.3846 5.69425 19.6903 0 12.6923 0ZM12.6923 23.0769C6.96684 23.0769 2.30769 18.4177 2.30769 12.6923C2.30769 6.96684 6.96684 2.30769 12.6923 2.30769C18.4177 2.30769 23.0769 6.96684 23.0769 12.6923C23.0769 18.4177 18.4177 23.0769 12.6923 23.0769Z" fill="black"/>
-                                    <path d="M29.6611 28.0305L23.8919 22.2613C23.4407 21.81 22.7116 21.81 22.2603 22.2613C21.8091 22.7125 21.8091 23.4416 22.2603 23.8929L28.0295 29.6621C28.2546 29.8869 28.55 30 28.8455 30C29.1409 30 29.4363 29.8869 29.6611 29.6618C30.1124 29.2109 30.1124 28.4815 29.6611 28.0305V28.0305Z" fill="black"/>
-                                </svg>
-                            </button>
-                        </form>
                         <div class="flex flex-col gap-2 mt-4">
                             <a href="index.php" class="category-list-box <?php
                                 $filter = $_GET['filter'] ?? 'all';
@@ -187,60 +178,71 @@
                 </div>
             </div>
             <div class="w-4/5 h-full mx-4 flex flex-col justify-between">
-                <table class="table-auto w-full h-max-full overflow-y-scroll">
-                    <thead>
-                    <tr class="border-b-2">
-                        <th class="px-4 py-2 text-left">Name</th>
-                        <th class="px-4 py-2 font-extralight text-left">Email</th>
-                        <th class="px-4 py-2 font-extralight text-left">Phone</th>
-                        <th class="px-4 py-2 font-extralight text-left">Address</th>
-                        <th class="px-4 py-2 font-extralight text-left">Gender</th>
-                        <th class="px-4 py-2 font-extralight text-left">Relation</th>
-                        <th class="px-4 py-2 font-extralight text-left">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    include "sources/conn.php";
-                    $filter = $_GET['filter'] ?? 'all';
+                <div class="flex flex-col w-full">
+                    <form class="border-2 border-gray-400 rounded-lg focus:outline-none focus:border-gray-500 m-3 flex items-center justify-center" action="index.php?filter='search'" method="post">
+                        <input type="text" name="search" placeholder="Search..." class="h-10 outline-none w-full mx-4">
+                        <button type="submit">
+                            <svg class="h-8 mr-4" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.6923 0C5.69405 0 0 5.69425 0 12.6923C0 19.6903 5.69425 25.3846 12.6923 25.3846C19.6903 25.3846 25.3846 19.6903 25.3846 12.6923C25.3846 5.69425 19.6903 0 12.6923 0ZM12.6923 23.0769C6.96684 23.0769 2.30769 18.4177 2.30769 12.6923C2.30769 6.96684 6.96684 2.30769 12.6923 2.30769C18.4177 2.30769 23.0769 6.96684 23.0769 12.6923C23.0769 18.4177 18.4177 23.0769 12.6923 23.0769Z" fill="black"/>
+                                <path d="M29.6611 28.0305L23.8919 22.2613C23.4407 21.81 22.7116 21.81 22.2603 22.2613C21.8091 22.7125 21.8091 23.4416 22.2603 23.8929L28.0295 29.6621C28.2546 29.8869 28.55 30 28.8455 30C29.1409 30 29.4363 29.8869 29.6611 29.6618C30.1124 29.2109 30.1124 28.4815 29.6611 28.0305V28.0305Z" fill="black"/>
+                            </svg>
+                        </button>
+                    </form>
+                    <table class="table-auto w-full h-max-full overflow-y-scroll">
+                        <thead>
+                        <tr class="border-b-2">
+                            <th class="px-4 py-2 text-left">Name</th>
+                            <th class="px-4 py-2 font-extralight text-left">Email</th>
+                            <th class="px-4 py-2 font-extralight text-left">Phone</th>
+                            <th class="px-4 py-2 font-extralight text-left">Address</th>
+                            <th class="px-4 py-2 font-extralight text-left">Gender</th>
+                            <th class="px-4 py-2 font-extralight text-left">Relation</th>
+                            <th class="px-4 py-2 font-extralight text-left">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        include "sources/conn.php";
+                        $filter = $_GET['filter'] ?? 'all';
 
-                    switch ($filter) {
-                        case 'search':
-                            $search_key = $_POST['search'] ?? '';
-                            $sql = "SELECT * FROM contacts WHERE username LIKE '%$search_key%' OR email LIKE '%$search_key%' OR phone LIKE '%$search_key%' OR address LIKE '%$search_key%'";
-                            break;
-                        case 'family':
-                            $sql = "SELECT * FROM contacts WHERE relationship = 'family'";
-                            break;
-                        case 'friend':
-                            $sql = "SELECT * FROM contacts WHERE relationship = 'friend'";
-                            break;
-                        case 'colleague':
-                            $sql = "SELECT * FROM contacts WHERE relationship = 'colleague'";
-                            break;
-                        case 'other':
-                            $sql = "SELECT * FROM contacts WHERE relationship = 'other'";
-                            break;
-                        default:
-                            $sql = "SELECT * FROM contacts";
-                    }
-                    $result = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td class='px-4 py-2'>" . $row['username'] . "</td>";
-                            echo "<td class='px-4 py-2'>" . $row['email'] . "</td>";
-                            echo "<td class='px-4 py-2'>" . $row['phoneNumber'] . "</td>";
-                            echo "<td class='px-4 py-2'>" . $row['address'] . "</td>";
-                            echo "<td class='px-4 py-2'>" . $row['gender'] . "</td>";
-                            echo "<td class='px-4 py-2'>" . $row['relationship'] . "</td>";
-                            echo "<td class='px-4 py-2'><a href='edit.php?id=" . $row['id'] . "'>Edit</a> | <a href='./sources/delete.php?id=" . $row['id'] . "'>Delete</a></td>";
-                            echo "</tr>";
+                        switch ($filter) {
+                            case 'search':
+                                $search_key = $_POST['search'] ?? '';
+                                $sql = "SELECT * FROM contacts WHERE username LIKE '%$search_key%' OR email LIKE '%$search_key%' OR phone LIKE '%$search_key%' OR address LIKE '%$search_key%'";
+                                break;
+                            case 'family':
+                                $sql = "SELECT * FROM contacts WHERE relationship = 'family'";
+                                break;
+                            case 'friend':
+                                $sql = "SELECT * FROM contacts WHERE relationship = 'friend'";
+                                break;
+                            case 'colleague':
+                                $sql = "SELECT * FROM contacts WHERE relationship = 'colleague'";
+                                break;
+                            case 'other':
+                                $sql = "SELECT * FROM contacts WHERE relationship = 'other'";
+                                break;
+                            default:
+                                $sql = "SELECT * FROM contacts";
                         }
-                    }
-                    ?>
-                    </tbody>
-                </table>
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td class='px-4 py-2'>" . $row['username'] . "</td>";
+                                echo "<td class='px-4 py-2'>" . $row['email'] . "</td>";
+                                echo "<td class='px-4 py-2'>" . $row['phoneNumber'] . "</td>";
+                                echo "<td class='px-4 py-2'>" . $row['address'] . "</td>";
+                                echo "<td class='px-4 py-2'>" . $row['gender'] . "</td>";
+                                echo "<td class='px-4 py-2'>" . $row['relationship'] . "</td>";
+                                echo "<td class='px-4 py-2'><a href='edit.php?id=" . $row['id'] . "'>Edit</a> | <a href='./sources/delete.php?id=" . $row['id'] . "'>Delete</a></td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
                 <form class="mb-5" method="post" action="sources/add.php">
                     <div class="flex flex-col gap-4 justify-end">
                         <div class="flex gap-4 items-end">
