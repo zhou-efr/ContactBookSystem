@@ -14,7 +14,7 @@ if (preg_match('/^$|[0-9\+\s]{1,20}$/', $_POST['phoneNumber'])) {
 }else{
     die('<script>alert("invalid phone number");location.href="../index.php";</script>');
 }
-if (preg_match("/^$|[a-zA-Z0-9\,\-\'\s]{1,100}$/", $_POST['address'])) {
+if (preg_match("/^$|[a-zA-Z0-9\,\-\s]{1,255}$/", $_POST['address'])) {
     $address = $_POST['address'] | " ";
 }else{
     die('<script>alert("invalid address");location.href="../index.php";</script>');
@@ -43,7 +43,7 @@ $sql = 'insert into contacts (username, phoneNumber, email, address, gender, rel
 mysqli_query($conn, $sql);
 
 if (mysqli_affected_rows($conn) <= 0){
-    die('<script>alert("error");location.href="../index.php";</script>');
+    die('<script>alert("Internal error");location.href="../index.php";</script>');
 }
 echo('<script>alert("success");</script>');
 header("Location: ../index.php");
