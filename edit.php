@@ -269,7 +269,7 @@ if(isset($_SESSION['user_id'])){ ?>
                 </label>
                 <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 mb-2 rounded leading-tight focus:outline-none" name="relationship" id="relationship">
                     <?php
-                    echo '<option '.(($relationship == 'please select')?"selected":"").' value="please select">Please select</option>';
+                    echo '<option '.(($relationship == 'please select')?"selected":"").' value="">Please select</option>';
                     echo '<option '.(($relationship == 'family')?"selected":"").' value="family">Family</option>';
                     echo '<option '.(($relationship == 'friend')?"selected":"").' value="friend">Friend</option>';
                     echo '<option '.(($relationship == 'colleague')?"selected":"").' value="colleague">Colleague</option>';

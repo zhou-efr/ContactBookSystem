@@ -258,7 +258,7 @@
                                     Email
                                 </label>
                                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                       id="email" type="email" name="email" placeholder="Email" required>
+                                       id="email" type="email" name="email" placeholder="Email" >
                             </div>
                             <div class="w-1/4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="phoneNumber">
@@ -299,7 +299,7 @@
                                     Gender
                                 </label>
                                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="gender" id="gender">
-                                    <option selected value="please select">Please select</option>
+                                    <option selected value="">Please select</option>
                                     <option value="female">Female</option>
                                     <option value="male">Male</option>
                                     <option value="other">Other</option>

@@ -1,39 +1,38 @@
 <?php
-// TODO : secure with regex
-$name = preg_match('/^[a-zA-Z0-9\s]{1,100}$/', $_POST['name']) ? $_POST['name'] : '<error>';
-if ($name == '<error>') {
-    echo '<script>alert("Invalid name");</script>';
-    header("Location: ../index.php");
+if (preg_match('/^$|[a-zA-Z\d\s]{1,100}$/', $_POST['name'])) {
+    $name = $_POST['name'] | " ";
+}else{
+    die('<script>alert("invalid name");location.href="../index.php";</script>');
 }
-$email = preg_match('/^[a-zA-Z0-9\-\@a-zA-Z0-9\.a-zA-Z0-9]{1,100}$/', $_POST['email']) ? $_POST['email'] : '<error>';
-if ($email == '<error>') {
-    echo '<script>alert("Invalid email");</script>';
-    header("Location: ../index.php");
+if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) or $_POST['email'] == '') {
+    $email = $_POST['email'] | " ";
+}else{
+    die('<script>alert("invalid email");location.href="../index.php";</script>');
 }
-$phone = preg_match('/^[0-9\+\s]{1,20}$/', $_POST['phoneNumber']) ? $_POST['phoneNumber'] : '<error>';
-if ($phone == '<error>') {
-    echo '<script>alert("Invalid phone");</script>';
-    header("Location: ../index.php");
+if (preg_match('/^$|[0-9\+\s]{1,20}$/', $_POST['phoneNumber'])) {
+    $phone = $_POST['phoneNumber'] | " ";
+}else{
+    die('<script>alert("invalid phone number");location.href="../index.php";</script>');
 }
-$address = preg_match("/^[a-zA-Z0-9\,\-\'\s]{1,100}$/", $_POST['address']) ? $_POST['address'] : '<error>';
-if ($address == '<error>') {
-    echo '<script>alert("Invalid address");</script>';
-    header("Location: ../index.php");
+if (preg_match("/^$|[a-zA-Z0-9\,\-\'\s]{1,100}$/", $_POST['address'])) {
+    $address = $_POST['address'] | " ";
+}else{
+    die('<script>alert("invalid address");location.href="../index.php";</script>');
 }
-$birthday = preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['birthday']) ? $_POST['birthday'] : '<error>';
-if ($birthday == '<error>') {
-    echo '<script>alert("Invalid birthday");</script>';
-    header("Location: ../index.php");
+if (preg_match('/^$|\d{4}-\d{2}-\d{2}$/', $_POST['birthday'])) {
+    $birthday = $_POST['birthday'] | "1990-01-01";
+}else{
+    echo $_POST['birthday'];
 }
-$gender = preg_match('/^[a-zA-Z]{1,10}$/', $_POST['gender']) ? $_POST['gender'] : '<error>';
-if ($birthday == '<error>') {
-    echo '<script>alert("Invalid request");</script>';
-    header("Location: ../index.php");
+if (preg_match('/^$|[a-zA-Z]{1,10}$/', $_POST['gender'])) {
+    $gender = $_POST['gender'] | " ";
+}else{
+    die('<script>alert("invalid request");location.href="../index.php";</script>');
 }
-$relationship = preg_match('/^[a-zA-Z]{1,10}$/', $_POST['relationship']) ? $_POST['relationship'] : '<error>';
-if ($birthday == '<error>') {
-    echo '<script>alert("Invalid request");</script>';
-    header("Location: ../index.php");
+if (preg_match('/^[a-zA-Z]{1,10}$/', $_POST['relationship']) && strtolower($_POST['relationship']) != "please select") {
+    $relationship = $_POST['relationship'] | " ";
+}else{
+    die('<script>alert("invalid relationship");location.href="../index.php";</script>');
 }
 
 include "conn.php";
